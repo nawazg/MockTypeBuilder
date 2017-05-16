@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTypeBuilder", "MockTypeBuilder\MockTypeBuilder.csproj", "{8EF87198-6854-4F57-8F16-010A3A3F5FCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockTypeBuilder.Tests", "MockTypeBuilder.Tests\MockTypeBuilder.Tests.csproj", "{9C67C563-547A-4DB4-8EBD-C812986BEB63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EF87198-6854-4F57-8F16-010A3A3F5FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF87198-6854-4F57-8F16-010A3A3F5FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF87198-6854-4F57-8F16-010A3A3F5FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF87198-6854-4F57-8F16-010A3A3F5FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C67C563-547A-4DB4-8EBD-C812986BEB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C67C563-547A-4DB4-8EBD-C812986BEB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C67C563-547A-4DB4-8EBD-C812986BEB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C67C563-547A-4DB4-8EBD-C812986BEB63}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
