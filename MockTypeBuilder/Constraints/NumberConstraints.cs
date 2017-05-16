@@ -1,6 +1,6 @@
 ﻿namespace MockTypeBuilder.Constraints
 {
-    public class NumberConstraints : IConstraints
+    public class NumberConstraints
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MockTypeBuilder.Constraints
 {
-    public class DateConstraints : IConstraints
+    public class DateConstraints
     {
     }
 }

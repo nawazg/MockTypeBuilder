@@ -17,9 +17,9 @@ namespace MockTypeBuilder
         private Dictionary<string, NumberConstraints> _propertyNumberContraints;
         private Dictionary<string, DateConstraints> _propertyDateContraints;
 
-        private Dictionary<string, StringConstraints> _typeStringContraints;
-        private Dictionary<string, NumberConstraints> _typeNumberContraints;
-        private Dictionary<string, DateConstraints> _typeDateContraints;
+        private List<StringConstraints> _typeStringContraints;
+        private List<NumberConstraints> _typeNumberContraints;
+        private List<DateConstraints> _typeDateContraints;
 
         /// <summary>
         /// Returns the current state as a single item (last created/edited single item) or creates a new single item with random values if none exist
@@ -129,30 +129,48 @@ namespace MockTypeBuilder
         }
 
         /// <summary>
-        /// Adds a contraint to the given property based on arguments set in the constraints object.
+        /// Adds a constraint to all string properties based on constraint arguments set in the Stringcontraints object. 
         /// By default, the constraint will only affect items created after the constraint is set. Set the regenerateValues parameter to true
         /// to update all existing items to meet the constraint.
+        /// Optionally, the propertyName parameter can be set to limit the constraint to the specified property, by default all string properties will be affected
         /// </summary>
-        /// <param name="propertyName">Name of property to add constraint to</param>
         /// <param name="constraint">Constraint arguments object</param>
-        /// <param name="regenerateValues">Whether or not existing items should be updated</param>
+        /// <param name="propertyName">name of property to add the constraint to</param>
+        /// <param name="regenerateValues">Whether or not existing items should be updated (optional)</param>
         /// <returns></returns>
-        public TypeBuilder<TBuildType> AddPropertyConstraints(string propertyName, IConstraints constraint, bool regenerateValues = false)
+        public TypeBuilder<TBuildType> AddConstraint(StringConstraints constraint, string propertyName = null, bool regenerateValues = false)
         {
-            //TODO: add a constraint to property name, if regenerate values is true then regen all existing defaults
+            //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
             return this;
         }
 
         /// <summary>
-        /// Adds a constraint to all the properties of the given type based on arguments set in the constraints object. 
+        /// Adds a constraint to all string properties based on constraint arguments set in the Stringcontraints object. 
         /// By default, the constraint will only affect items created after the constraint is set. Set the regenerateValues parameter to true
         /// to update all existing items to meet the constraint.
+        /// Optionally, the propertyName parameter can be set to limit the constraint to the specified property, by default all numeric properties will be affected
         /// </summary>
-        /// <param name="type">The type to add constraint to</param>
         /// <param name="constraint">Constraint arguments object</param>
+        /// <param name="propertyName">name of property to add the constraint to</param>
         /// <param name="regenerateValues">Whether or not existing items should be updated</param>
         /// <returns></returns>
-        public TypeBuilder<TBuildType> AddTypeConstraints(IConstraints constraint, bool regenerateValues = false)
+        public TypeBuilder<TBuildType> AddConstraint(NumberConstraints constraint, string propertyName = null, bool regenerateValues = false)
+        {
+            //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a constraint to all date properties based on constraint arguments set in the DateConstraints object. 
+        /// By default, the constraint will only affect items created after the constraint is set. Set the regenerateValues parameter to true
+        /// to update all existing items to meet the constraint.
+        /// Optionally, the propertyName parameter can be set to limit the constraint to the specified property, by default all DateTime properties will be affected
+        /// </summary>
+        /// <param name="constraint">Constraint arguments object</param>
+        /// <param name="propertyName">name of property to add the constraint to</param>
+        /// <param name="regenerateValues">Whether or not existing items should be updated</param>
+        /// <returns></returns>
+        public TypeBuilder<TBuildType> AddConstraint(DateConstraints constraint, string propertyName = null, bool regenerateValues = false)
         {
             //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
             return this;
