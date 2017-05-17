@@ -113,7 +113,7 @@ namespace MockTypeBuilder
         {
             if (_singleEdit)
             {
-                UpdateProperty<T>(_currentItem, value, propertyName);
+                UpdateProperty(_currentItem, value, propertyName);
             }
             else
             {
@@ -121,7 +121,7 @@ namespace MockTypeBuilder
                 {
                     if (index == null || index.Contains(i))
                     {
-                        UpdateProperty<T>(_temporaryContent[i], value, propertyName);
+                        UpdateProperty(_temporaryContent[i], value, propertyName);
                     }
                 }
             }
@@ -140,7 +140,16 @@ namespace MockTypeBuilder
         /// <returns></returns>
         public TypeBuilder<TBuildType> AddConstraint(StringConstraints constraint, string propertyName = null, bool regenerateValues = false)
         {
-            //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
+            if (propertyName != null)
+            {
+                _propertyStringContraints.Add(propertyName, constraint);
+                if (regenerateValues) RePopulateByProperty(propertyName);
+            }
+            else
+            {
+                _typeStringContraints.Add(constraint);
+                if (regenerateValues) RePopulateByType("String");
+            }
             return this;
         }
 
@@ -156,7 +165,16 @@ namespace MockTypeBuilder
         /// <returns></returns>
         public TypeBuilder<TBuildType> AddConstraint(NumberConstraints constraint, string propertyName = null, bool regenerateValues = false)
         {
-            //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
+            if (propertyName != null)
+            {
+                _propertyNumberContraints.Add(propertyName, constraint);
+                if (regenerateValues) RePopulateByProperty(propertyName);
+            }
+            else
+            {
+                _typeNumberContraints.Add(constraint);
+                if (regenerateValues) RePopulateByType("Number");
+            }
             return this;
         }
 
@@ -172,7 +190,16 @@ namespace MockTypeBuilder
         /// <returns></returns>
         public TypeBuilder<TBuildType> AddConstraint(DateConstraints constraint, string propertyName = null, bool regenerateValues = false)
         {
-            //TODO: add constraint to all types specified in this, if regenerate values is true then regen all existing defaults
+            if (propertyName != null)
+            {
+                _propertyDateContraints.Add(propertyName, constraint);
+                if(regenerateValues) RePopulateByProperty(propertyName);
+            }
+            else
+            {
+                _typeDateContraints.Add(constraint);
+                if (regenerateValues) RePopulateByType("Date");
+            }
             return this;
         }
 
@@ -182,7 +209,7 @@ namespace MockTypeBuilder
             //TODO: create a new current item with random values
         }
 
-        private void UpdateProperty<T>(TBuildType updateObject, T value, string propertyName)
+        private static void UpdateProperty<T>(TBuildType updateObject, T value, string propertyName)
         {
             PropertyInfo property = updateObject.GetType().GetRuntimeProperty(propertyName);
             property.SetValue(updateObject, value);
@@ -204,6 +231,16 @@ namespace MockTypeBuilder
             {
                 _content.Add(_currentItem);
             }
+        }
+
+        private void RePopulateByProperty(string propertyName)
+        {
+            //TODO: stage current items, move content to temp list, update temp list
+        }
+
+        private void RePopulateByType(string typeName)
+        {
+            //TODO: stage current items, move content to temp list, update temp list
         }
         #endregion
     }
